@@ -4,7 +4,7 @@ from .models import Course, Quiz, Evaluation, Contest, Correction
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
-        fields = ['id', 'title', 'image_url', 'ocr_text', 'summary', 'notions']
+        fields = ['id', 'title', 'image', 'ocr_text', 'summary', 'notions']
 
 class QuizSerializer(serializers.ModelSerializer):
     class Meta:

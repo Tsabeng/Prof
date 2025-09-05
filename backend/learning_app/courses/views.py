@@ -13,7 +13,7 @@ class CourseUploadView(APIView):
         if serializer.is_valid():
             course = serializer.save(user=request.user)
             # Trigger async OCR processing
-            process_image_ocr.delay(course.id, course.image_url)
+            process_image_ocr.delay(course.id)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

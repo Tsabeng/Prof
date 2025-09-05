@@ -8,7 +8,7 @@ class Class(models.Model):
 
 class Course(models.Model):
     title = models.CharField(max_length=200)
-    image_url = models.CharField(max_length=500)
+    image = models.ImageField(upload_to='courses/',null=True, blank=True) 
     ocr_text = models.TextField(blank=True)
     summary = models.TextField(blank=True)
     notions = models.JSONField(default=list)
