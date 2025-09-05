@@ -12,9 +12,10 @@ class CourseUploadView(APIView):
         serializer = CourseSerializer(data=request.data)
         if serializer.is_valid():
             course = serializer.save(user=request.user)
-            # Trigger async OCR processing
-            process_image_ocr.delay(course.id)
+            print(f"Course created with ID: {course.id}") 
+            process_image_ocr.delay(course.id) 
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        print(f"Serializer errors: {serializer.errors}")  
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class QuizView(APIView):

@@ -11,9 +11,9 @@ class Course(models.Model):
     image = models.ImageField(upload_to='courses/',null=True, blank=True) 
     ocr_text = models.TextField(blank=True)
     summary = models.TextField(blank=True)
-    notions = models.JSONField(default=list)
+    notions = models.JSONField(default=list,blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    versions = models.ManyToManyField('self', symmetrical=False)
+    versions = models.ManyToManyField('self', symmetrical=False , blank=True)
 
 class Quiz(models.Model):
     TYPE_CHOICES = (
